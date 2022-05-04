@@ -40,9 +40,9 @@ const del = async (infos) => {
 	
 	const getAll = await user.getAll();
 
-	const existId = getAll.some(f => f.id !== id);
+	const existId = getAll.some(f => f.id === Number(id));
 
-	if(existId) throw {status: 400, message: 'id nao encontrado'};
+	if(!existId) throw {status: 400, message: 'id nao encontrado'};
 
 	const { error: errorId } = schemaId.validate(id);
 
