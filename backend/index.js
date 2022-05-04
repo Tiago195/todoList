@@ -1,18 +1,12 @@
 const express = require('express');
 const task = require('./controller/task');
-const users = require('./controller/users'); 
+const users = require('./router/users');
 
 const app = express();
 
 app.use(express.json());
 
-app.get('/users', users.getAll);
-
-app.post('/users', users.add);
-
-app.put('/users', users.att);
-
-app.delete('/users/:id', users.del);
+app.use('/users', users);
 
 app.get('/task/:id', task.get);
 
